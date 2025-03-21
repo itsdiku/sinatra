@@ -1,0 +1,17 @@
+<form id="todo-form" action="/add-item" method="post" data-turbo="true" class="mb-3">
+  <div class="input-group">
+    <input type="text" name="item" placeholder="Enter a new item" class="form-control" required>
+    <button type="submit" class="btn btn-primary">Add Item</button>
+  </div>
+</form>
+
+<ul id="items" class="list-group">
+  <% @items.each do |item| %>
+    <li id="item-<%= item[0] %>" class="list-group-item d-flex justify-content-between align-items-center">
+      <%= item[1] %>
+      <form action="/delete-item/<%= item[0] %>" method="post" style="display: inline;">
+        <button type="submit" class="btn btn-danger btn-sm">Delete</button>
+      </form>
+    </li>
+  <% end %>
+</ul>
